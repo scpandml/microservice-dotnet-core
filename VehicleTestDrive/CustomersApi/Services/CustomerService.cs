@@ -26,7 +26,7 @@ namespace CustomersApi.Services
             await dbContext.Customers.AddAsync(customer);
             await dbContext.SaveChangesAsync();
 
-            string connectionString = "Endpoint=sb://vehicletestdrive.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=d1HezUv9AW1aImoFYrtn/dgAOwNXphvdYZQFmyXsNEA=";
+            string connectionString = "Endpoint=sb://cartestdrive.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=U2QZx6roloUKjWHhuxaQIqYsJkz9/vtS521/9b9peu4=";
             string queueName = "azureorderqueue";
             await using var client = new ServiceBusClient(connectionString);
             var objectAsText = JsonConvert.SerializeObject(customer);
