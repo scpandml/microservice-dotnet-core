@@ -1,11 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Car Details Page";
 }
-@model Vehicle
+@model VehicleDetails
 
-    <center>
-        <h1>CAR Details Page</h1>
-    </center>
+<center>
+    <h1>CAR Details Page</h1>
+</center>
 
 <table border="2" bordercolor="grey" align="center">
     <tr>
@@ -27,23 +27,25 @@
             <img src="@Model.ImageUrl" />
         </td>
         <td>
+            @using (Html.BeginForm("AddCustomer", "Customer", FormMethod.Post))
+            {
+                <div class="form-item">
+                    <input type="text" name="Name" id="name" placeholder="Name">
+                </div>
 
-            <div class="form-item">
+                <div class="form-item">
+                    <input type="text" name="Email" id="Email" placeholder="Email">
+                </div>
 
-                <input type="text" name="name" id="name" placeholder="Name">
-            </div>
+                <div class="form-item">
+                    <input type="text" name="Phone" id="Phone" placeholder="Phone">
+                </div>
 
-            <div class="form-item">
+                <input type="hidden" name="vehicleId" value="@Model.Id" />
 
-                <input type="text" name="Email" id="Email" placeholder="Email">
-            </div>
+                @*<a href='@Url.Action("AddCustomer", "Customer")'>*@
+                    <input type='submit' value='Book Test Drive' />
+                @*</a>*@
+            }
+            </td>
 
-            <div class="form-item">
-
-                <input type="text" name="Phone" id="Phone" placeholder="Phone">
-            </div>
-
-            <a href='@Url.Action("Contact", "Home")'>
-                <input type='button' value='Book Test Drive' />
-            </a>
-        </td>

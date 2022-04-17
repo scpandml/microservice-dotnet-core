@@ -34,11 +34,11 @@ namespace GoogleAuth.Controllers
                     claim.Value
                 });
 
-            List<Vehicle> vehicles = new List<Vehicle>();
+            List<VehicleDetails> vehicles = new List<VehicleDetails>();
             if (claims != null)
             {
-                //vehicles = await HttpHelper.Get<List<Vehicle>>("https://localhost:7200/", "/api/Vehicles");
-                vehicles = await HttpHelper.Get<List<Vehicle>>("https://localhost:7003/", "/gateway/vehicles");
+                //vehicles = await HttpHelper.Get<List<VehicleDetails>>("https://localhost:7200/", "/api/Vehicles");
+                vehicles = await HttpHelper.Get<List<VehicleDetails>>("https://localhost:7003/", "/gateway/vehicles");
             }
 
             return View(vehicles);
@@ -47,8 +47,8 @@ namespace GoogleAuth.Controllers
         public async Task<IActionResult> VehicalDetails(string id)
         {
 
-            //vehicles = await HttpHelper.Get<List<Vehicle>>("https://localhost:7200/", "/api/Vehicles" + id);
-            var vehicles = await HttpHelper.Get<Vehicle>("https://localhost:7003/", "/gateway/vehicles/" + id);
+            //vehicles = await HttpHelper.Get<List<VehicleDetails>>("https://localhost:7200/", "/api/Vehicles" + id);
+            var vehicles = await HttpHelper.Get<VehicleDetails>("https://localhost:7003/", "/gateway/vehicles/" + id);
 
             return View(vehicles);
         }
