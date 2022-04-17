@@ -34,6 +34,12 @@ namespace GoogleAuth.Controllers
                     claim.Value
                 });
 
+
+            if (claims.LastOrDefault().Value == "shri1900@gmail.com")
+            {
+                return RedirectToAction("AdminPage", "Admin");
+            }
+
             List<VehicleDetails> vehicles = new List<VehicleDetails>();
             if (claims != null)
             {

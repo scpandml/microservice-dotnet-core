@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Reservation List Page";
+}
+@model List<Reservation>
+
+<center>
+    <h1>Reservation List Page</h1>
+</center>
+
+<div>
+    <table border="2" bordercolor="grey" align="center">
+        @foreach (var item in Model)
+        {
+            using (Html.BeginForm("AddBooking", "Admin", FormMethod.Post))
+            {
+                <tr>
+                    <td style="margin:10px">
+                        <input type="hidden" name="email" value="@item.Email" />
+                        
+                        <input type='submit' value='Select' />
+                    </td>
+                    <td>
+                        Model - @item.Name <br />
+                        Phone    -  @item.Phone <br />
+                        Vehical Id  -   @item.VehicleId <br />
+                        EmailId  -   @item.Email <br /><br />
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+</div>
