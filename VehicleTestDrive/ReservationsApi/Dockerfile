@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["ReservationsApi/ReservationsApi.csproj", "ReservationsApi/"]
-RUN dotnet restore "ReservationsApi/ReservationsApi.csproj"
+COPY ["ReservationsApi.csproj", "."]
+RUN dotnet restore "ReservationsApi.csproj"
 COPY . .
-WORKDIR "/src/ReservationsApi"
+WORKDIR "/src"
 RUN dotnet build "ReservationsApi.csproj" -c Release -o /app/build
 
 FROM build AS publish

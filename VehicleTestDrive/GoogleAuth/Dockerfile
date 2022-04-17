@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["GoogleAuth/GoogleAuth.csproj", "GoogleAuth/"]
-RUN dotnet restore "GoogleAuth/GoogleAuth.csproj"
+COPY ["GoogleAuth.csproj", "."]
+RUN dotnet restore "GoogleAuth.csproj"
 COPY . .
-WORKDIR "/src/GoogleAuth"
+WORKDIR "/src"
 RUN dotnet build "GoogleAuth.csproj" -c Release -o /app/build
 
 FROM build AS publish
