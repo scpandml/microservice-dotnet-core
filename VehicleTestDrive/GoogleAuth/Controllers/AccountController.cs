@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using GoogleAuth.Models;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authorization;
@@ -33,7 +34,23 @@ namespace GoogleAuth.Controllers
                     claim.Value
                 });
 
-            return Json(claims);
+            List<Vehicle> vehicles = new List<Vehicle>();
+            if (claims != null)
+            {
+                //vehicles = await HttpHelper.Get<List<Vehicle>>("https://localhost:7200/", "/api/Vehicles");
+                vehicles = await HttpHelper.Get<List<Vehicle>>("https://localhost:7003/", "/gateway/vehicles");
+            }
+
+            return View(vehicles);
+        }
+
+        public async Task<IActionResult> VehicalDetails(string id)
+        {
+
+            //vehicles = await HttpHelper.Get<List<Vehicle>>("https://localhost:7200/", "/api/Vehicles" + id);
+            var vehicles = await HttpHelper.Get<Vehicle>("https://localhost:7003/", "/gateway/vehicles/" + id);
+
+            return View(vehicles);
         }
     }
 }

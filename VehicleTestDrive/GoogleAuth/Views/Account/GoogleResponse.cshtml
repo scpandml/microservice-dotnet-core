@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Car List Page";
+}
+@model List<Vehicle>
+
+<center>
+    <h1>CAR List Page</h1>
+</center>
+
+<div>
+    <table border="2" bordercolor="grey" align="center">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    Model - @item.Name <br />
+                    @*Displacement    -  @item.Displacement <br />
+                    Length  -   @item.Length <br />
+                    Width   -   @item.Width <br />
+                    Height  -   @item.Height <br />*@
+                    Price  -   @item.Price <br /><br />
+                    <a href='@Url.Action("VehicalDetails", "Account", new { id = item.Id})'>
+                        <input type='button' value='Book Test Drive' />
+                    </a>
+                </td>
+                <td>
+                    <img src="@item.ImageUrl" />
+                </td>
+            </tr>
+        }
+    </table>
+</div>

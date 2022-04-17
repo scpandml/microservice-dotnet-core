@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Car Details Page";
+}
+@model Vehicle
+
+    <center>
+        <h1>CAR Details Page</h1>
+    </center>
+
+<table border="2" bordercolor="grey" align="center">
+    <tr>
+        <th colspan="2">Book Test Drive</th>
+    </tr>
+    <tr>
+        <th>Car</th>
+
+        <th>Customer Details</th>
+    </tr>
+    <tr>
+        <td>
+            Model - @Model.Name <br />
+            Displacement    -  @Model.Displacement <br />
+            Length  -   @Model.Length <br />
+            Width   -   @Model.Width <br />
+            Height  -   @Model.Height <br />
+            Price  -   @Model.Price <br /><br />
+            <img src="@Model.ImageUrl" />
+        </td>
+        <td>
+
+            <div class="form-item">
+
+                <input type="text" name="name" id="name" placeholder="Name">
+            </div>
+
+            <div class="form-item">
+
+                <input type="text" name="Email" id="Email" placeholder="Email">
+            </div>
+
+            <div class="form-item">
+
+                <input type="text" name="Phone" id="Phone" placeholder="Phone">
+            </div>
+
+            <a href='@Url.Action("Contact", "Home")'>
+                <input type='button' value='Book Test Drive' />
+            </a>
+        </td>
