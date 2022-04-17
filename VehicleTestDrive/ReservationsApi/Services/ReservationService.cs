@@ -18,7 +18,7 @@ namespace ReservationsApi.Services
         }
         public async Task<List<Reservation>> GetReservations()
         {
-            string connectionString = "Endpoint=sb://vehicletestdrive.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=d1HezUv9AW1aImoFYrtn/dgAOwNXphvdYZQFmyXsNEA=";
+            string connectionString = "Endpoint=sb://cartestdrive.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=U2QZx6roloUKjWHhuxaQIqYsJkz9/vtS521/9b9peu4=";
             string queueName = "azureorderqueue";
             await using var client = new ServiceBusClient(connectionString);
             ServiceBusReceiver receiver = client.CreateReceiver(queueName);
@@ -48,10 +48,10 @@ namespace ReservationsApi.Services
                 var smtpClient = new SmtpClient("smtp.live.com")
                 {
                     Port = 587,
-                    Credentials = new NetworkCredential("pass your email address", "your password"),
+                    Credentials = new NetworkCredential("scpandml@gmail.com", "Scp&ml100"),
                     EnableSsl = true,
                 };
-                smtpClient.Send("pass your email address", reservationResult.Email, "Vehicle Test Drive", "Your test drive is reserved");
+                smtpClient.Send("scpandml@gmail.com", reservationResult.Email, "Car Test Drive", "Your test drive is reserved");
                 reservationResult.IsMailSent = true;
                 await dbContext.SaveChangesAsync();
             }
