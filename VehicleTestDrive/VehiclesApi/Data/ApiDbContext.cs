@@ -9,7 +9,6 @@ namespace VehiclesApi.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=VehicleApiDb;");
             optionsBuilder.UseSqlServer(@"Data Source=SHRIKANT-PC\MSSQLSERVER01;Initial Catalog=VehicleApiDb;Integrated Security=True");
         }
     }
