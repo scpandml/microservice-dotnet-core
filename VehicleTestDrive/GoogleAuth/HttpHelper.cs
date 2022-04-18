@@ -32,7 +32,7 @@ namespace GoogleAuth
                 client.BaseAddress = new Uri(apiBasicUri);
                 var content = new StringContent(JsonConvert.SerializeObject(stringValue), Encoding.UTF8, "application/json");
                 var result = await client.PutAsync(url, content);
-                result.EnsureSuccessStatusCode();
+                //result.EnsureSuccessStatusCode();
             }
         }
 

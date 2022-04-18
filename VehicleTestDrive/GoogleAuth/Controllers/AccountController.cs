@@ -35,7 +35,7 @@ namespace GoogleAuth.Controllers
                 });
 
 
-            if (claims.LastOrDefault().Value == "shri1900@gmail.com")
+            if (claims.LastOrDefault().Value == "scpandml@gmail.com")
             {
                 return RedirectToAction("AdminPage", "Admin");
             }

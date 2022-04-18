@@ -19,9 +19,9 @@ namespace GoogleAuth.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddBooking(string email)
+        public async Task<IActionResult> AddBooking(string id)
         {
-
+            await HttpHelper.Put<int>("https://localhost:7003/", "/gateway/reservations/", Convert.ToInt32(id));
             return View();
         }
     }
