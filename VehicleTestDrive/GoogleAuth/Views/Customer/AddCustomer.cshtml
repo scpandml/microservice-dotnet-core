@@ -1,3 +1,103 @@
 ﻿<center>
     <h1>Thank you for your interest, we will let you know soon</h1>
 </center>
+
+<h2>
+    Book Your Ride
+</h2>
+<link rel="stylesheet" href="./css/paymentform.css" type="text/css" />
+<form method="POST">
+    <h4>
+        Account
+    </h4>
+    <div class="input-group">
+        <div class="input-box">
+            <input type="text" placeholder="Full Name" required class="name">
+            <i class="fa fa-user icon"></i>
+        </div>
+        <div class="input-box">
+            <input type="text" placeholder="Nick Name" required class="name">
+            <i class="fa fa-user icon"></i>
+        </div>
+    </div>
+    <div class="input-group">
+        <div class="input-box">
+            <input type="email" placeholder="Email Adress" required class="name">
+            <i class="fa fa-envelope icon"></i>
+        </div>
+    </div>
+    <div class="input-group">
+        <div class="input-box">
+            <h4>
+                Date of Birth
+            </h4>
+            <input type="text" placeholder="DD" class="dob">
+            <input type="text" placeholder="MM" class="dob">
+            <input type="text" placeholder="YYYY" class="dob">
+        </div>
+        <div class="input-box">
+            <h4>
+                Gender
+            </h4>
+            <input type="radio" id="b1" name="gendar" checked class="radio">
+            <label for="b1">Male</label>
+            <input type="radio" id="b2" name="gendar" class="radio">
+            <label for="b2">Female</label>
+        </div>
+    </div>
+    <div class="input-group">
+        <div class="input-box">
+            <h4>
+
+                <!-- ========================= SECTION CONTENT END// ========================= -->
+
+
+                <div id="smart-button-container">
+                    <div style="text-align: center;">
+                        <div id="paypal-button-container"></div>
+                    </div>
+                </div>
+                <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=EUR" data-sdk-integration-source="button-factory"></script>
+                <script>
+                    function initPayPalButton() {
+                        paypal.Buttons({
+                            style: {
+                                shape: 'pill',
+                                color: 'gold',
+                                layout: 'vertical',
+                                label: 'buynow',
+
+                            },
+
+                            createOrder: function (data, actions) {
+                                return actions.order.create({
+                                    purchase_units: [{ "amount": { "currency_code": "EUR", "value": 1 } }]
+                                });
+                            },
+
+                            onApprove: function (data, actions) {
+                                return actions.order.capture().then(function (orderData) {
+
+                                    // Full available details
+                                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+                                    // Show a success message within this page, e.g.
+                                    const element = document.getElementById('paypal-button-container');
+                                    element.innerHTML = '';
+                                    element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+                                    // Or go to another URL:  actions.redirect('thank_you.html');
+
+                                });
+                            },
+
+                            onError: function (err) {
+                                console.log(err);
+                            }
+                        }).render('#paypal-button-container');
+                    }
+                    initPayPalButton();
+                </script>
+        </div>
+    </div>
+</form>
